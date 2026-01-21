@@ -1,6 +1,18 @@
 class StudentAgent :
     def __init__(self):
-        self.subjects = {}
-        self.completed = set()
+        self.subjects = {
+  "Math": {
+      "Algebra": "hard",
+      "Trigonometry": "medium"
+  },
+  "Physics": {
+      "Motion": "easy"
+  }
+}
+        self.completed = set({"Algebra", "Motion"})
         self.hours_per_day = 4
-agent = StudentAgent()
+
+
+print(StudentAgent().subjects)
+print(StudentAgent().completed)
+print(StudentAgent().hours_per_day)
