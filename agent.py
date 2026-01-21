@@ -1,4 +1,5 @@
 class StudentAgent :
+    #added some of the initial subjects and topics.
     def __init__(self):
         self.subjects = {
   "Math": {
@@ -10,7 +11,8 @@ class StudentAgent :
   }
 }
         self.completed = set({"Algebra", "Motion"})
-        self.hours_per_day = 4
+        self.hours_per_day = 4  
+        #adding methods to add subjects and topics   
     def add_subject(self, subject,):
            if subject not in self.subjects:
              self.subjects[subject] = {}
