@@ -20,3 +20,11 @@ class StudentAgent :
               if subject in self.subjects:
                 self.subjects[subject][topic] = difficulty
 
+    def give_feedback(self, topic, feedback):
+          if feedback == "easy":
+              self.completed.add(topic)
+          elif feedback == "hard":
+             for subject in self.subjects:
+                  if topic in self.subjects[subject]:
+                       self.subjects[subject][topic] = "hard"
+                    
