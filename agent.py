@@ -20,11 +20,10 @@ class StudentAgent :
              self.subjects[subject] = {}
            
              #adding method to add topics to subjects
-             def add_topic(self, subject, topic, difficulty):
-              if subject not in self.subjects:
-               self.subjects[subject] = {}
-
-               self.subjects[subject][topic] = {
+    def add_topic(self, subject, topic, difficulty):
+           if subject not in self.subjects:
+            self.subjects[subject] = {}
+            self.subjects[subject][topic] = {
             "difficulty": difficulty,
            "confidence": 0.5,
            "attempts": 0
