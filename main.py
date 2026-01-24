@@ -22,8 +22,8 @@ while True:
                 break
             print("Invalid difficulty. Please enter easy, medium, or hard.")
 
-        agent.add_topic(subject, topic, difficulty)
-        print("Topic added successfully.")
+            agent.add_topic(subject, topic, difficulty)
+            print("Topic added successfully.")
 
     elif choice == "2":
         plan = generate_plan(agent)
