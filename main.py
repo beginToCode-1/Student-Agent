@@ -12,18 +12,28 @@ while True:
     choice = input("Choose: ").strip()
 
     if choice == "1":
-        subject = input("Subject name: ")
-        topic = input("Topic name: ")
-        difficulty = input("Difficulty (easy/medium/hard): ")
+        subject = input("Subject name: ").strip().title()
+        topic = input("Topic name: ").strip().title()
+
+        # Difficulty validation
+        while True:
+            difficulty = input("Difficulty (easy/medium/hard): ").lower()
+            if difficulty in ["easy", "medium", "hard"]:
+                break
+            print("Invalid difficulty. Please enter easy, medium, or hard.")
 
         agent.add_topic(subject, topic, difficulty)
-        print("Topic added.")
+        print("Topic added successfully.")
 
     elif choice == "2":
         plan = generate_plan(agent)
         print("\nYour Study Plan:")
-        for subject, topic, hours in plan:
-            print(f"- {subject} - {topic}: {hours} hour(s)")
+
+        if not plan:
+            print("No topics to study. You're either done or your data is broken.")
+        else:
+            for subject, topic, hours in plan:
+                print(f"- {subject} → {topic}: {hours} hour(s)")
 
     elif choice == "5":
         print("Bye.")
@@ -31,3 +41,4 @@ while True:
 
     else:
         print("Invalid choice.")
+     
