@@ -1,22 +1,19 @@
-from agent import StudentAgent
+
 def generate_plan(agent):
     plan = []
 
     for subject, topics in agent.subjects.items():
-        for topic, data in topics.items():
-            if data["confidence"] > 0.85:
-               continue
- 
-           # if topic in agent.completed:
-            #    continue
-            if data == "easy":
-                hours_needed = 1
-            elif data == "medium":
-                hours_needed = 2
-            else:  # hard
-                hours_needed = 3
+        for topic, difficulty in topics.items():
 
-            plan.append((subject, topic, hours_needed))
+            if topic in agent.completed:
+                continue
 
+            hours = {
+                "easy": 1,
+                "medium": 2,
+                "hard": 3
+            }.get(difficulty, 2)
 
-    return plan   
+            plan.append((subject, topic, hours))
+
+    return plan
