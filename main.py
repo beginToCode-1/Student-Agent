@@ -4,41 +4,35 @@ from planner import generate_plan
 agent = StudentAgent()
 
 while True:
-    print("\n===== Study Planner AI =====")
-    print("1. Add study topic")
-    print("2. Generate study plan")
+    print("\n1. Add topic")
+    print("2. Generate plan")
+    print("3. Mark completed")
+    print("4. Show status")
     print("5. Exit")
 
-    choice = input("Choose: ").strip()
+    choice = input("Choose: ")
 
     if choice == "1":
-        subject = input("Subject name: ").strip().title()
-        topic = input("Topic name: ").strip().title()
-
-        # Difficulty validation
-        while True:
-            difficulty = input("Difficulty (easy/medium/hard): ").lower()
-            if difficulty in ["easy", "medium", "hard"]:
-                break
-            print("Invalid difficulty. Please enter easy, medium, or hard.")
-
-            agent.add_topic(subject, topic, difficulty)
-            print("Topic added successfully.")
+        s = input("Subject: ")
+        t = input("Topic: ")
+        d = input("Difficulty (easy/medium/hard): ")
+        agent.add_topic(s, t, d)
 
     elif choice == "2":
         plan = generate_plan(agent)
-        print("\nYour Study Plan:")
-
         if not plan:
-            print("No topics to study. You're either done or your data is broken.")
+            print("No pending topics.")
         else:
-            for subject, topic, hours in plan:
-                print(f"- {subject} → {topic}: {hours} hour(s)")
+            print("\nStudy Plan:")
+            for item in plan:
+                print(item)
+
+    elif choice == "3":
+        t = input("Topic name: ")
+        agent.mark_completed(t)
+
+    elif choice == "4":
+        agent.show_status()
 
     elif choice == "5":
-        print("Bye.")
         break
-
-    else:
-        print("Invalid choice.")
-     
