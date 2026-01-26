@@ -35,4 +35,6 @@ while True:
         agent.show_status()
 
     elif choice == "5":
+        agent.save_data()
+        print("Data saved. Goodbye!")
         break
