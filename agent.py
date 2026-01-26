@@ -35,7 +35,7 @@ class StudentAgent:
             json.dump(data, f, indent=4)
     
     def load_data(self):
-        if not os.path.exists(self.filname):
+        if not os.path.exists(self.filename):
             return
         
         with open(self.filename, 'r') as f:
