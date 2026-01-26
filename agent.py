@@ -3,7 +3,7 @@ import os
 
 
 class StudentAgent:
-    def __init__(self, filename ="data/student_data.txt"):
+    def __init__(self, filename ="student_data.txt"):
         self.filename = filename
         self.subjects = {}        # {subject: {topic: difficulty}}
         self.completed = set()
