@@ -7,7 +7,7 @@ class StudentAgent:
         self.filename = filename
         self.subjects = {}        # {subject: {topic: difficulty}}
         self.completed = set()
-        self.load_data()
+        self.load_data() # for loading old memory from disk
 
     def add_topic(self, subject, topic, difficulty):
         if subject not in self.subjects:
@@ -28,7 +28,7 @@ class StudentAgent:
     def save_data(self):
         data ={
             "subjects": self.subjects,
-            "completed": list(self.completed)
+            "completed": list(self.completed)# Convert set to list cuz JSON doesn't support sets   
         }
         with open(self.filename, 'w') as f:
             import json
