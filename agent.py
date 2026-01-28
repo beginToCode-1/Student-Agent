@@ -7,6 +7,7 @@ class StudentAgent:
         self.filename = filename
         self.subjects = {}        # {subject: {topic: difficulty}}
         self.completed = set()
+        self.hours_per_day = 4
         self.load_data() # for loading old memory from disk
 
     def add_topic(self, subject, topic, difficulty):
