@@ -2,6 +2,7 @@ from agent import StudentAgent
 from planner import generate_plan
 
 agent = StudentAgent()
+#Currnent Menu
 
 while True:
     print("\n1. Add topic")
