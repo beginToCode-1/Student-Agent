@@ -1,0 +1,39 @@
+{
+    "subjects": {
+        "Data Anaylsis": {
+            "Class limits": "easy"
+        },
+        "Programming fundamentals": {
+            "Algorithms": "easy"
+        },
+        "Data analysis": {
+            "Frequency distribution": "hard"
+        },
+        "math": {
+            "algebra": "hard"
+        },
+        "data analysis": {
+            "frequency distribution": "hard"
+        },
+        "Financial Accounting": {
+            "Trail Balance": "medium"
+        },
+        "Physicis": {
+            "motion": "easy"
+        },
+        "": {
+            "Stocks studying": "medium"
+        }
+    },
+    "completed": [
+        "motion",
+        "stocks studying",
+        "Class limits",
+        "Algorithms",
+        "Stocks studying",
+        "algebra",
+        "Frequency distribution",
+        "frequency distribution",
+        "Trail Balance"
+    ]
+}
