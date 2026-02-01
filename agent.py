@@ -9,15 +9,30 @@ class StudentAgent:
         self.completed = set()
         self.hours_per_day = 4
         self.load_data() # for loading old memory from disk
+#old code:
+   # def add_topic(self, subject, topic, difficulty):
+   #    if subject not in self.subjects:
+   #         self.subjects[subject] = {}
 
-    def add_topic(self, subject, topic, difficulty):
-        if subject not in self.subjects:
-            self.subjects[subject] = {}
-
-        self.subjects[subject][topic] = difficulty.lower()
+#        self.subjects[subject][topic] = difficulty.lower()
 
     def mark_completed(self, topic):
         self.completed.add(topic)
+
+ # new code:
+    def add_topic(self, subject, topic, difficulty):
+        subject = subject.strip().lower()
+        topic = topic.strip().lower()
+        difficulty = difficulty.strip().lower()
+
+        if subject not in self.subjects:
+          self.subjects[subject] = {}
+
+        self.subjects[subject][topic] = {
+        "difficulty": difficulty,
+        "confidence": 0.5,
+        "attempts": 0
+    }
 
     def show_status(self):
         print("\nCurrent topics:")
@@ -44,3 +59,21 @@ class StudentAgent:
             
             self.subjects = data.get("subjects", {})
             self.completed = set(data.get("completed", []))
+
+    def give_feedback(self, topic, feedback):
+      topic = topic.strip().lower()
+
+      for subject in self.subjects:
+            if topic in self.subjects[subject]:
+                 info = self.subjects[subject][topic]
+
+                 info["attempts"] += 1
+            if feedback == "done":
+                 info["confidence"] = min(1.0, info["confidence"] + 0.2)
+
+            elif feedback == "hard":
+                 info["confidence"] = max(0.0, info["confidence"] - 0.2)
+
+            self._adjust_difficulty(info)
+            return
+        
