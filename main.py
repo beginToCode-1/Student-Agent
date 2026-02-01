@@ -9,7 +9,9 @@ while True:
     print("2. Generate plan")
     print("3. Mark completed")
     print("4. Show status")
-    print("5. Exit")
+    print("5. Give feedback")
+    print("6. Save and exit")
+    
 
     choice = input("Choose: ")
 
@@ -36,6 +38,13 @@ while True:
         agent.show_status()
 
     elif choice == "5":
+     topic = input("Topic name: ")
+     feedback = input("Feedback (done / hard): ")
+     agent.give_feedback(topic, feedback)
+    elif choice == "6":
         agent.save_data()
         print("Data saved. Goodbye!")
         break
+
+ 
+
