@@ -76,4 +76,12 @@ class StudentAgent:
 
             self._adjust_difficulty(info)
             return
-        
+
+    def _adjust_difficulty(self, info):
+           if info["confidence"] < 0.3:
+                 info["difficulty"] = "hard"
+           elif info["confidence"] < 0.6:
+                 info["difficulty"] = "medium"
+           else:
+                 info["difficulty"] = "easy"
+    
