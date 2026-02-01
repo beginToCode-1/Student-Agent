@@ -12,13 +12,17 @@ def generate_plan(agent):
     tasks = []
 
     for subject, topics in agent.subjects.items():
-        for topic, difficulty in topics.items():
+        for topic, info in topics.items():
 
-            if topic in agent.completed:
-                continue
+         if topic in agent.completed:
+            continue
 
-            priority = difficulty_weight.get(difficulty, 2)
-            tasks.append((priority, subject, topic, difficulty))
+        base = difficulty_weight.get(info["difficulty"], 2)
+        penalty = 1 - info["confidence"]
+        priority = base + penalty
+
+        tasks.append((priority, subject, topic, info))
+
 
     # Sort by priority (hard first)
     tasks.sort(reverse=True)
