@@ -26,14 +26,14 @@
         }
     },
     "completed": [
-        "Stocks studying",
-        "Frequency distribution",
+        "algebra",
         "motion",
+        "Frequency distribution",
+        "Trail Balance",
         "Class limits",
         "frequency distribution",
         "stocks studying",
-        "Trail Balance",
-        "algebra",
+        "Stocks studying",
         "Algorithms"
     ]
 }
