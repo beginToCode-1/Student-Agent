@@ -41,6 +41,7 @@ while True:
      topic = input("Topic name: ")
      feedback = input("Feedback (done / hard): ")
      agent.give_feedback(topic, feedback)
+    
     elif choice == "6":
         agent.save_data()
         print("Data saved. Goodbye!")
