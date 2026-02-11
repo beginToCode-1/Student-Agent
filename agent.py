@@ -9,12 +9,7 @@ class StudentAgent:
         self.completed = set()
         self.hours_per_day = 4
         self.load_data() # for loading old memory from disk
-#old code:
-   # def add_topic(self, subject, topic, difficulty):
-   #    if subject not in self.subjects:
-   #         self.subjects[subject] = {}
 
-#        self.subjects[subject][topic] = difficulty.lower()
 
     def mark_completed(self, topic):
         self.completed.add(topic)
