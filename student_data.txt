@@ -23,17 +23,24 @@
         },
         "": {
             "Stocks studying": "medium"
+        },
+        "economics": {
+            "financial accountings": {
+                "difficulty": "hard",
+                "confidence": 0.5,
+                "attempts": 0
+            }
         }
     },
     "completed": [
-        "Stocks studying",
-        "Trail Balance",
-        "Algorithms",
-        "motion",
-        "stocks studying",
         "algebra",
         "Class limits",
+        "stocks studying",
         "frequency distribution",
-        "Frequency distribution"
+        "Algorithms",
+        "Trail Balance",
+        "Frequency distribution",
+        "motion",
+        "Stocks studying"
     ]
 }
