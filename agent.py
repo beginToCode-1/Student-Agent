@@ -28,14 +28,14 @@ class StudentAgent:
         "confidence": 0.5,
         "attempts": 0
     }
-
+#showing status of the topics:
     def show_status(self):
         print("\nCurrent topics:")
         for subject, topics in self.subjects.items():
             for topic, diff in topics.items():
                 status = "DONE" if topic in self.completed else "PENDING"
                 print(f"- {subject} | {topic} | {diff} | {status}")
-
+#saving data using json format:
     def save_data(self):
         data ={
             "subjects": self.subjects,
@@ -44,7 +44,7 @@ class StudentAgent:
         with open(self.filename, 'w') as f:
             import json
             json.dump(data, f, indent=4)
-    
+#loading data from disk:
     def load_data(self):
         if not os.path.exists(self.filename):
             return
@@ -54,7 +54,7 @@ class StudentAgent:
             
             self.subjects = data.get("subjects", {})
             self.completed = set(data.get("completed", []))
-
+#giving feedback to the user about the topic:
     def give_feedback(self, topic, feedback):
         topic = topic.strip().lower()
 

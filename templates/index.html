@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Study Agent</title>
+</head>
+
+<body>
+
+<h1>AI Study Agent</h1>
+
+<h3>{{ message }}</h3>
+
+<hr>
+
+<h2>Add Topic</h2>
+
+<form method="POST">
+    <input type="hidden" name="action" value="add">
+
+    Subject:
+    <input name="subject" required>
+
+    Topic:
+    <input name="topic" required>
+
+    Difficulty:
+    <select name="difficulty">
+        <option>easy</option>
+        <option>medium</option>
+        <option>hard</option>
+    </select>
+
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Generate Plan</h2>
+
+<form method="POST">
+    <input type="hidden" name="action" value="plan">
+    <button type="submit">Generate Study Plan</button>
+</form>
+
+{% if plan %}
+<h3>Today's Plan</h3>
+<ul>
+{% for subject, topic, hours in plan %}
+<li>{{subject}} - {{topic}} ({{hours}} hrs)</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<hr>
+
+<h2>Give Feedback</h2>
+
+<form method="POST">
+    <input type="hidden" name="action" value="feedback">
+
+    Topic:
+    <input name="topic_feedback" required>
+
+    Feedback:
+    <select name="feedback">
+        <option value="done">Done</option>
+        <option value="hard">Hard</option>
+    </select>
+
+    <button type="submit">Submit</button>
+</form>
+
+<hr>
+
+<h2>Current Topics</h2>
+
+<ul>
+{% for subject, topics in subjects.items() %}
+    <li><b>{{subject}}</b>
+        <ul>
+        {% for topic, info in topics.items() %}
+            <li>
+                {{topic}} |
+                difficulty: {{info.difficulty}}
+                | confidence: {{info.confidence}}
+            </li>
+        {% endfor %}
+        </ul>
+    </li>
+{% endfor %}
+</ul>
+
+</body>
+</html>
