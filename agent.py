@@ -58,9 +58,9 @@ class StudentAgent:
     def give_feedback(self, topic, feedback):
         topic = topic.strip().lower()
 
-        for subject in self.subjects:
-          if topic in self.subjects[subject]:
-            info = self.subjects[subject][topic]
+        for subject, topics in self.subjects.items():
+          if topic in topics:
+            info = topics[topic]
 
             info["attempts"] += 1
 
@@ -73,7 +73,7 @@ class StudentAgent:
             print("Feedback recorded.")
             return
 
-    print("Topic not found. Check spelling.")
+        print("Topic not found. Check spelling.")
 
 
     def _adjust_difficulty(self, info):
