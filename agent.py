@@ -56,24 +56,24 @@ class StudentAgent:
             self.completed = set(data.get("completed", []))
 #giving feedback to the user about the topic:
     def give_feedback(self, topic, feedback):
-        topic = topic.strip().lower()
 
-        for subject, topics in self.subjects.items():
-          if topic in topics:
-            info = topics[topic]
+            found = False
 
-            info["attempts"] += 1
+            for subject in self.subjects:
+                if topic in self.subjects[subject]:
 
-            if feedback == "done":
-                info["confidence"] = min(1.0, info["confidence"] + 0.2)
-            elif feedback == "hard":
-                info["confidence"] = max(0.0, info["confidence"] - 0.2)
+                 info = self.subjects[subject][topic]
+ 
+                if feedback == "done":
+                 info["confidence"] = min(1.0, info["confidence"] + 0.2)
+                elif feedback == "hard":
+                 info["confidence"] = max(0.0, info["confidence"] - 0.2)
 
-            self._adjust_difficulty(info)
-            print("Feedback recorded.")
-            return
-
-        print("Topic not found. Check spelling.")
+                found = True
+                break
+ 
+            if not found:
+              print("Topic not found. Check spelling.")
 
 
     def _adjust_difficulty(self, info):
